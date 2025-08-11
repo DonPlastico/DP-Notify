@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DP-Notify</title>
+
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/610ae1a27e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Se agrega la clase 'top-right' al contenedor para establecer la posición por defecto -->
+    <div class="container top-right"></div>
+
+    <div class="settings-menu" style="display: none;">
+        <button class="close-button" id="close-settings"><i class="fa-solid fa-xmark"></i></button>
+
+        <div class="settings-content">
+            <div class="compact-header">
+                <span class="compact-title">Panel de Notificaciones</span>
+            </div>
+
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <label>Notificaciones</label>
+                    <div class="neo-toggle-container">
+                        <input class="neo-toggle-input" id="toggle-notifications" type="checkbox" checked />
+                        <label class="neo-toggle" for="toggle-notifications">
+                            <div class="neo-track">
+                                <div class="neo-background-layer"></div>
+                                <div class="neo-grid-layer"></div>
+                                <div class="neo-track-highlight"></div>
+                            </div>
+                            <div class="neo-thumb">
+                                <div class="neo-thumb-ring"></div>
+                                <div class="neo-thumb-core"></div>
+                                <div class="neo-thumb-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M9.5 17L19.5 7" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                                <div class="neo-thumb-wave"></div>
+                                <div class="neo-thumb-pulse"></div>
+                            </div>
+                            <div class="neo-gesture-area"></div>
+                            <div class="neo-interaction-feedback">
+                                <div class="neo-ripple"></div>
+                                <div class="neo-progress-arc"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <label>Sonido</label>
+                    <div class="neo-toggle-container">
+                        <input class="neo-toggle-input" id="toggle-sound" type="checkbox" checked />
+                        <label class="neo-toggle" for="toggle-sound">
+                            <div class="neo-track">
+                                <div class="neo-background-layer"></div>
+                                <div class="neo-grid-layer"></div>
+                                <div class="neo-track-highlight"></div>
+                            </div>
+                            <div class="neo-thumb">
+                                <div class="neo-thumb-ring"></div>
+                                <div class="neo-thumb-core"></div>
+                                <div class="neo-thumb-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M9.5 17L19.5 7" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                                <div class="neo-thumb-wave"></div>
+                                <div class="neo-thumb-pulse"></div>
+                            </div>
+                            <div class="neo-gesture-area"></div>
+                            <div class="neo-interaction-feedback">
+                                <div class="neo-ripple"></div>
+                                <div class="neo-progress-arc"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-item full-width">
+                    <label for="volume-slider">Volumen</label>
+                    <div class="volume-container">
+                        <i class="fa-solid fa-volume-off"></i>
+                        <input type="range" id="volume-slider" min="0" max="100" value="50" class="volume-slider">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </div>
+                </div>
+
+                <div class="setting-item full-width">
+                    <label for="position-select">Posición</label>
+                    <select id="position-select" class="position-select">
+                        <option value="top-left">Superior Izquierda</option>
+                        <option value="top-center">Superior Centro</option>
+                        <option value="top-right">Superior Derecha</option>
+                        <option value="center-left">Centro Izquierda</option>
+                        <option value="center-right">Centro Derecha</option>
+                        <option value="bottom-left">Inferior Izquierda</option>
+                        <option value="bottom-center">Inferior Centro</option>
+                        <option value="bottom-right">Inferior Derecha</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="show-notifications">Mostrar notificaciones</button>
+            </div>
+
+            <div class="action-buttons">
+                <button id="restore-settings">RESTAURAR</button>
+                <button id="save-settings">GUARDAR CAMBIOS</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

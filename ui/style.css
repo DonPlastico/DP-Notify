@@ -1,0 +1,574 @@
+:root {
+    --primary-color: rgba(255, 255, 255, 1);
+    --secondary-color: rgba(255, 255, 255, 0.8);
+    --bg-color: rgba(0, 0, 0, 0.9);
+    --hover-color: rgba(255, 255, 255, 0.2);
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+html,
+body {
+    background: transparent !important;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: auto;
+    height: auto;
+}
+
+.top-left {
+    top: 5px;
+    left: 5px;
+}
+
+.top-center {
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.top-right {
+    top: 5px;
+    right: 5px;
+}
+
+.center-left {
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}
+
+.center-right {
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+}
+
+.bottom-left {
+    bottom: 5px;
+    left: 5px;
+}
+
+.bottom-center {
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bottom-right {
+    bottom: 5px;
+    right: 5px;
+}
+
+.info {
+    position: absolute;
+    color: white;
+    transform: translate(-.3vw, -.3vw);
+    text-shadow: 0 0 1vh rgba(0, 0, 0, .5);
+}
+
+.notify {
+    display: none;
+    width: 14vw;
+    height: auto;
+    margin: 1vh;
+    background-color: rgba(0, 0, 0, .7);
+    box-shadow: 0 0 1vh rgba(0, 0, 0, .5);
+    animation: enter .5s ease;
+    border-radius: 5px;
+}
+
+.content {
+    position: relative;
+    font-size: .9rem;
+    color: white;
+    text-align: center;
+    width: 95%;
+    height: fit-content;
+    margin: .8vh 0 .8vh 0;
+    left: 50%;
+    transform: translate(-50%);
+    transition: ease .5s;
+}
+
+.bar {
+    position: relative;
+    width: 100%;
+    height: .2vh;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(201, 201, 201, 0.7);
+    transition: ease .5s;
+}
+
+@keyframes progressbar {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes exit {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+.settings-menu {
+    overflow: hidden;
+    position: fixed;
+    transition: all 0.2s ease;
+    color: var(--primary-color);
+    background: var(--bg-color);
+    border: .5px solid var(--border-color);
+    border-radius: 5px 0 0 5px;
+    box-shadow: 0 0 .8vh black;
+    font-family: 'Arial', sans-serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: 26%;
+    flex-direction: column;
+    transform-origin: right center;
+    box-sizing: border-box;
+    z-index: 100;
+    padding: 10px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: #e74c3c;
+}
+
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.compact-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.compact-title {
+    color: white;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.setting-item label {
+    font-size: 1rem;
+    opacity: 1.0;
+    color: var(--primary-color);
+}
+
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-container i {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: rgba(201, 201, 201, 0.7);
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .2s;
+    border-radius: 5px;
+}
+
+.volume-slider:hover {
+    opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    background: #36f9c7;
+    animation: neo-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    border: 2px solid black;
+    box-shadow: 0 0 0 0px var(--toggle-on-color);
+    border-radius: 50%;
+}
+
+.position-select {
+    width: 185px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    font-size: 0.9rem;
+    margin-left: auto;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.action-buttons button {
+    flex: 1;
+    border: none;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+#restore-settings:hover,
+#save-settings:hover,
+#show-notifications:hover {
+    background: var(--hover-color);
+    transform: translateX(-3px);
+}
+
+/* Estilos para los checkboxes neo-toggle */
+.neo-toggle-container {
+    --toggle-width: 60px;
+    --toggle-height: 28px;
+    --toggle-bg: rgba(0, 0, 0, .5);
+    --toggle-off-color: #475057;
+    --toggle-on-color: #36f9c7;
+    --toggle-transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    user-select: none;
+    margin-left: auto;
+}
+
+.neo-toggle-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.neo-toggle {
+    position: relative;
+    width: var(--toggle-width);
+    height: var(--toggle-height);
+    display: block;
+    cursor: pointer;
+    transform: translateZ(0);
+    perspective: 500px;
+}
+
+/* Track styles */
+.neo-track {
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--toggle-height) / 2);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: translateZ(-1px);
+    transition: transform var(--toggle-transition);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.neo-background-layer {
+    position: absolute;
+    inset: 0;
+    background: var(--toggle-bg);
+    background-image: linear-gradient(-45deg, rgba(20, 20, 20, 0.8) 0%, rgba(30, 30, 30, 0.3) 50%, rgba(20, 20, 20, 0.8) 100%);
+    opacity: 1;
+    transition: all var(--toggle-transition);
+}
+
+.neo-grid-layer {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right, rgba(71, 80, 87, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(71, 80, 87, 0.05) 1px, transparent 1px);
+    background-size: 10px 10px;
+    background-position: 1px 1px;
+    opacity: 0;
+    transition: all var(--toggle-transition);
+}
+
+.neo-track-highlight {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: all var(--toggle-transition);
+}
+
+.neo-thumb {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: var(--toggle-height);
+    height: var(--toggle-height);
+    transform: translate3d(0, -50%, 0);
+    transform-style: preserve-3d;
+    transition: transform var(--toggle-transition);
+}
+
+.neo-thumb-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), 0 2px 15px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform var(--toggle-transition);
+}
+
+.neo-thumb-core {
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: var(--toggle-off-color);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3), inset 0 0 8px rgba(0, 0, 0, 0.5);
+    transform: translateZ(10px);
+    transition: all var(--toggle-transition);
+}
+
+.neo-thumb-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    opacity: 0.1;
+    transition: opacity var(--toggle-transition);
+}
+
+.neo-thumb-wave,
+.neo-thumb-wave::before,
+.neo-thumb-wave::after {
+    content: '';
+    position: absolute;
+    background: var(--toggle-off-color);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neo-thumb-wave::before {
+    transition-delay: 0.1s;
+}
+
+.neo-thumb-wave::after {
+    transition-delay: 0.2s;
+}
+
+.neo-thumb-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0px var(--toggle-off-color);
+    opacity: 0;
+    transition: all var(--toggle-transition);
+}
+
+.neo-gesture-area {
+    position: absolute;
+    inset: 0;
+}
+
+.neo-interaction-feedback {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: calc(var(--toggle-height) / 2);
+}
+
+.neo-ripple {
+    position: absolute;
+    background: var(--primary-color);
+    opacity: 0.1;
+    border-radius: 50%;
+    transform: scale(0);
+    animation-name: neo-ripple;
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: forwards;
+    pointer-events: none;
+    left: var(--x, 0);
+    top: var(--y, 0);
+}
+
+@keyframes neo-ripple {
+    from {
+        transform: scale(0);
+        opacity: 0.1;
+    }
+
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.neo-progress-arc {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    opacity: 0;
+    animation: neo-progress 1s infinite linear;
+    transition: opacity 0.2s;
+}
+
+@keyframes neo-progress {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Checked state */
+.neo-toggle-input:checked+.neo-toggle .neo-thumb {
+    transform: translate3d(calc(var(--toggle-width) - var(--toggle-height)), -50%, 0);
+}
+
+.neo-toggle-input:checked+.neo-toggle .neo-thumb-core {
+    background: var(--toggle-on-color);
+}
+
+.neo-toggle-input:checked+.neo-toggle .neo-track-highlight {
+    opacity: 1;
+    background: linear-gradient(90deg, rgba(54, 249, 199, 0.4), transparent);
+}
+
+.neo-toggle-input:checked+.neo-toggle .neo-thumb-icon {
+    opacity: 1;
+}
+
+.neo-toggle-input:checked+.neo-toggle .neo-thumb-pulse {
+    animation: neo-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    box-shadow: 0 0 0 0px var(--toggle-on-color);
+}
+
+/* Hover effects */
+.neo-toggle:hover .neo-thumb-ring {
+    transform: scale(1.05);
+}
+
+.neo-toggle-input:not(:checked)+.neo-toggle:hover .neo-thumb-wave::before,
+.neo-toggle-input:not(:checked)+.neo-toggle:hover .neo-thumb-wave::after {
+    opacity: 1;
+}
+
+/* Drag gesture handling */
+.neo-toggle:active {
+    --x-offset: 0;
+}
+
+.neo-toggle:active .neo-thumb {
+    transform: translate3d(var(--x-offset), -50%, 0);
+    transition-duration: 0s;
+}
