@@ -99,7 +99,7 @@ body {
 
 .notify {
     display: none;
-    width: 14vw;
+    width: 15vw;
     height: auto;
     margin: 1vh;
     background-color: rgba(0, 0, 0, .7);
@@ -112,10 +112,9 @@ body {
     position: relative;
     font-size: .9rem;
     color: white;
-    text-align: center;
     width: 95%;
     height: fit-content;
-    margin: .8vh 0 .8vh 0;
+    margin: 1vh 0 1vh 0;
     left: 50%;
     transform: translate(-50%);
     transition: ease .5s;
